@@ -1,6 +1,6 @@
 {
-  "name": "@paintit/react-canvas-draw",
-  "version": "1.1.2",
+  "name": "@paintit-app/react-canvas-draw",
+  "version": "1.1.7",
   "description": "A simple yet powerful canvas-drawing component for React.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -51,15 +51,14 @@
     "react-dom": "^16.2.0",
     "style-loader": "^0.19.1"
   },
-  "author": {
-    "name": "Martin Beierling",
-    "email": "mbeierling@gmail.com"
-  },
-  "homepage": "https://embiem.github.io/react-canvas-draw/",
   "license": "MIT",
-  "repository": "https://github.com/embiem/react-canvas-draw",
-  "bugs": {
-    "url": "https://github.com/embiem/react-canvas-draw/issues"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/paintit-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:paintit-app/react-canvas-draw.git",
+    "directory": "@paintit-app/react-canvas-draw"
   },
   "keywords": [
     "react-component",
