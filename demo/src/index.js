@@ -107,6 +107,20 @@ class Demo extends Component {
                     </button>
                     <button
                         onClick={() => {
+                            console.log(this.saveableCanvas.getImageAsBase64())
+                        }}
+                    >
+                        Save as img
+                    </button>
+                    <button
+                        onClick={() => {
+                            console.log(this.saveableCanvas.getSaveData())
+                        }}
+                    >
+                        get data points
+                    </button>
+                    <button
+                        onClick={() => {
                             this.saveableCanvas.eraseAll();
                         }}
                     >

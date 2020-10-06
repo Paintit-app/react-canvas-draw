@@ -70,6 +70,7 @@ These are the defaultProps of CanvasDraw. You can pass along any of these props 
 Useful functions that you can call, e.g. when having a reference to this component:
 
 - `getSaveData()` returns the drawing's save-data as a stringified object
+- `getImageAsBase64` returns the drawing and background as an base64 string
 - `loadSaveData(saveData: String, immediate: Boolean)` loads a previously saved drawing using the saveData string, as well as an optional boolean flag to load it immediately, instead of live-drawing it.
 - `clear()` clears the canvas completely, including previously erased lines, and resets the view. After a clear, `undo()` will have no effect.
 - `eraseAll()` clears the drawn lines but retains their data; calling `undo()` can restore the erased lines. *Note: erased lines are not included in the save data.*

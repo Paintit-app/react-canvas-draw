@@ -126,6 +126,14 @@ export default class CanvasDraw extends PureComponent {
         this.coordSystem.attachViewChangeListener(this.applyView.bind(this));
     }
 
+    getImageAsBase64 = () => {
+        const canvases = this.canvas;
+        const ctx = canvases.grid.getContext('2d');
+        ctx.drawImage(canvases.temp, 0, 0)
+        ctx.drawImage(canvases.drawing, 0, 0)
+        return canvases.grid.toDataURL()
+    }
+
     undo = () => {
         let lines = [];
         if (this.lines.length) {
@@ -307,6 +315,10 @@ export default class CanvasDraw extends PureComponent {
                     }
                 }}
             >
+                <button type='button'
+                    onClick={this.saveAsImage}>
+                    Merge
+                </button>
                 {canvasTypes.map(({ name, zIndex }) => {
                     const isInterface = name === "interface";
                     return (
