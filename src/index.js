@@ -315,10 +315,6 @@ export default class CanvasDraw extends PureComponent {
                     }
                 }}
             >
-                <button type='button'
-                    onClick={this.saveAsImage}>
-                    Merge
-                </button>
                 {canvasTypes.map(({ name, zIndex }) => {
                     const isInterface = name === "interface";
                     return (
