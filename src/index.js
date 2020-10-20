@@ -98,7 +98,7 @@ export default class CanvasDraw extends PureComponent {
         clampLinesToDocument: false,
     };
 
-    ///// public API /////////////////////////////////////////////////////////////
+    ///// public API ////////////////////////////////////////////////////////////
 
     constructor(props) {
         super(props);
