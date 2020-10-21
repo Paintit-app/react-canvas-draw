@@ -73,6 +73,7 @@ export default class CanvasDraw extends PureComponent {
         mouseZoomFactor: PropTypes.number,
         zoomExtents: boundsProp,
         clampLinesToDocument: PropTypes.bool,
+        erase: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -96,6 +97,7 @@ export default class CanvasDraw extends PureComponent {
         mouseZoomFactor: 0.01,
         zoomExtents: { min: 0.33, max: 3 },
         clampLinesToDocument: false,
+        erase: false,
     };
 
     ///// public API /////////////////////////////////////////////////////////////
@@ -482,7 +484,8 @@ export default class CanvasDraw extends PureComponent {
     drawPoints = ({ points, brushColor, brushRadius }) => {
         this.ctx.temp.lineJoin = "round";
         this.ctx.temp.lineCap = "round";
-        this.ctx.temp.strokeStyle = brushColor;
+        this.ctx.temp.strokeStyle = brushColor === "erase" ? "#dbb7bb" : brushColor;
+        this.ctx.drawing.globalCompositeOperation = brushColor === "erase" ? "destination-out" : "source-over";
 
         this.clearWindow(this.ctx.temp);
         this.ctx.temp.lineWidth = brushRadius * 2;
@@ -510,6 +513,10 @@ export default class CanvasDraw extends PureComponent {
 
     saveLine = ({ brushColor, brushRadius } = {}) => {
         if (this.points.length < 2) return;
+
+        if (this.points[0].erase) {
+            brushColor = "erase";
+          }
 
         // Save as new line
         this.lines.push({
@@ -635,10 +642,10 @@ export default class CanvasDraw extends PureComponent {
         if (this.props.hideInterface) return;
 
         this.clearWindow(ctx);
-
+        const brushColor = this.props.erase ? "#dbb7bb" : this.props.brushColor;
         // Draw brush preview
         ctx.beginPath();
-        ctx.fillStyle = this.props.brushColor;
+        ctx.fillStyle = brushColor;
         ctx.arc(brush.x, brush.y, this.props.brushRadius, 0, Math.PI * 2, true);
         ctx.fill();
 
